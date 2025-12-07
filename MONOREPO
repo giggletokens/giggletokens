@@ -1,0 +1,93 @@
+giggletokens/
+├── README.md
+├── LICENSE
+├── .gitignore
+├── .env.example
+│
+├── apps/
+│   ├── kid-dashboard/          # Next.js kid app (Giggle Wallet + trading)
+│   │   ├── package.json
+│   │   ├── next.config.mjs
+│   │   └── src/
+│   │       ├── pages/
+│   │       │   ├── index.tsx            # Kid login
+│   │       │   ├── home.tsx             # Portfolio
+│   │       │   ├── tokens/[mint].tsx    # Token detail + buy/sell
+│   │       │   └── create.tsx           # Create token
+│   │       ├── components/
+│   │       ├── lib/
+│   │       │   └── api.ts
+│   │       └── styles/
+│   │           └── globals.css
+│   │
+│   ├── parent-dashboard/
+│   │   ├── package.json
+│   │   └── src/
+│   │       ├── pages/
+│   │       │   ├── index.tsx            # Login
+│   │       │   └── dashboard.tsx        # Overview + deposit/controls
+│   │       └── components/
+│   │
+│   └── admin-dashboard/
+│       ├── package.json
+│       └── src/
+│           ├── pages/
+│           │   └── moderation.tsx       # Approve/reject memes
+│           └── components/
+│
+├── backend/
+│   ├── api/
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   └── src/
+│   │       ├── app.ts
+│   │       ├── server.ts
+│   │       ├── routes/
+│   │       │   ├── auth.routes.ts
+│   │       │   ├── child.routes.ts
+│   │       │   ├── parent.routes.ts
+│   │       │   ├── wallet.routes.ts
+│   │       │   ├── token.routes.ts
+│   │       │   ├── pool.routes.ts
+│   │       │   └── admin.routes.ts
+│   │       ├── controllers/
+│   │       ├── services/
+│   │       ├── middleware/
+│   │       ├── db/
+│   │       │   └── prisma.ts
+│   │       └── solana/
+│   │           ├── giggleClient.ts
+│   │           └── pda.ts
+│   │
+│   └── processor/
+│       ├── package.json
+│       └── src/
+│           ├── index.ts         # main loop
+│           ├── syncDeposits.ts
+│           ├── syncVaults.ts
+│           └── syncPools.ts
+│
+├── programs/
+│   └── giggle_program/
+│       ├── Cargo.toml
+│       ├── Anchor.toml
+│       └── programs/
+│           └── giggle_program/
+│               └── src/
+│                   ├── lib.rs
+│                   ├── state.rs
+│                   └── errors.rs
+│
+├── prisma/
+│   └── schema.prisma
+│
+├── scripts/
+│   ├── initConfig.ts
+│   ├── whitelistMint.ts
+│   ├── createTestMintAndPool.ts
+│   └── runLocalStack.sh
+│
+└── .github/
+    └── workflows/
+        ├── ci.yml
+        └── deploy.yml
